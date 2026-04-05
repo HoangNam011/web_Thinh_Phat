@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thịnh Phát - Cho thuê máy photocopy & Văn phòng phẩm</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-scroll">
+      <span>&#9679; Cho thuê máy photocopy giá rẻ - Giao máy tận nơi</span>
+      <span>&#9679; Sửa chữa - Thay mực tất cả các dòng máy</span>
+      <span>&#9679; Văn phòng phẩm chính hãng - Giao hàng nhanh</span>
+      <span>&#9679; Hotline: <span id="topbar-phone">0909 123 456</span> - Hỗ trợ 24/7</span>
+      <span>&#9679; Bảo hành 12 tháng cho máy thuê</span>
+      <span>&#9679; Cho thuê máy photocopy giá rẻ - Giao máy tận nơi</span>
+      <span>&#9679; Sửa chữa - Thay mực tất cả các dòng máy</span>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="main-header">
+    <div class="header-inner">
+
+      <a href="#home" class="logo">
+        <span class="logo-main">Thịnh</span><span class="logo-red">Phát</span><span class="logo-dot-red">.</span>
+      </a>
+
+      <div class="location-btn">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        TP. Hồ Chí Minh
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" width="15" height="15" fill="none" stroke="#999" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm, dịch vụ..." oninput="handleSearch(this.value)" />
+        <button class="search-submit">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+      </div>
+
+      <div class="header-right">
+        <a href="tel:0909123456" class="hdr-btn hdr-phone" id="hdr-phone-link">
+          <div class="hdr-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <span id="hdr-phone-text">0909 123 456</span>
+        </a>
+        <a href="#cart" class="hdr-btn" id="cartBtn">
+          <div class="hdr-icon">
+            <svg width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span class="hdr-badge" id="cartCount">0</span>
+          </div>
+          <span>Giỏ hàng</span>
+        </a>
+        <button class="hdr-btn admin-toggle-btn" onclick="toggleAdminPanel()">
+          <div class="hdr-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+          </div>
+          <span>Quản trị</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CATEGORY NAV -->
+  <nav class="cat-nav">
+    <div class="cat-nav-inner">
+      <a href="#home"     class="cat-link active" onclick="filterCategory('all', this)">Tất cả</a>
+      <a href="#services" class="cat-link" onclick="filterCategory('thue', this)">Cho thuê máy</a>
+      <a href="#services" class="cat-link" onclick="filterCategory('suachua', this)">Sửa chữa &amp; Thay mực</a>
+      <a href="javascript:void(0)" class="cat-link" onclick="filterCategory('giay', this)">Giấy &amp; Bút</a>
+      <a href="javascript:void(0)" class="cat-link" onclick="filterCategory('khan', this)">Khăn &amp; Gối</a>
+      <a href="javascript:void(0)" class="cat-link" onclick="filterCategory('bang', this)">Bảng &amp; File</a>
+      <a href="#contact"  class="cat-link">Liên hệ</a>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section id="home" class="hero-section">
+    <div class="hero-inner">
+
+      <div class="hero-side-promo">
+        <div class="side-promo-tag">HOT</div>
+        <p class="side-promo-title">Cho thuê<br>Máy Photo</p>
+        <p class="side-promo-price">Từ 500k<span>/tháng</span></p>
+      </div>
+
+      <div class="hero-main-banner">
+        <div class="banner-text">
+          <p class="banner-eyebrow">Thịnh Phát &nbsp;|&nbsp; Dịch vụ photocopy chuyên nghiệp</p>
+          <h1 class="banner-title">Cho thuê máy<br>photocopy.</h1>
+          <p class="banner-sub">Giao máy tận nơi - Bảo hành 12 tháng.</p>
+          <div class="banner-actions">
+            <a href="#services" class="btn-banner">Xem dịch vụ</a>
+            <a href="tel:0909123456" class="btn-banner-outline" id="banner-phone-link">Gọi ngay</a>
+          </div>
+        </div>
+        <div class="banner-device">
+          <img src="may-photo.svg" alt="Máy photocopy cho thuê" class="hero-machine-img" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="services-section">
+    <div class="services-inner">
+      <div class="section-bar">
+        <span class="section-bar-label">DỊCH VỤ</span>
+        <h2>Dịch vụ của Thịnh Phát</h2>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card fade-up">
+          <div class="sv-icon sv-blue">
+            <svg width="32" height="32" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 4v4M16 4v4M2 10h20"/><circle cx="12" cy="15" r="1.5"/></svg>
+          </div>
+          <h3>Cho thuê máy photocopy</h3>
+          <p>Ricoh, Canon, Kyocera, Toshiba... Giao máy tận nơi, ký hợp đồng linh hoạt theo tháng / quý / năm.</p>
+          <ul class="sv-features">
+            <li>&#10003; Bảo hành &amp; sửa chữa miễn phí</li>
+            <li>&#10003; Hỗ trợ kỹ thuật tận nơi</li>
+            <li>&#10003; Từ 500.000đ/tháng</li>
+          </ul>
+          <a href="#contact" class="sv-cta">Liên hệ thuê máy</a>
+        </div>
+
+        <div class="service-card featured fade-up">
+          <div class="sv-featured-badge">Phổ biến</div>
+          <div class="sv-icon sv-red">
+            <svg width="32" height="32" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Sửa chữa &amp; thay mực</h3>
+          <p>Nhận sửa chữa, vệ sinh, thay mực/hộp mực tất cả dòng máy photocopy, máy in tại văn phòng bạn.</p>
+          <ul class="sv-features">
+            <li>&#10003; Kỹ thuật viên kinh nghiệm 10 năm</li>
+            <li>&#10003; Sửa tại nhà hoặc mang về xưởng</li>
+            <li>&#10003; Bảo hành linh kiện 3 tháng</li>
+          </ul>
+          <a href="#contact" class="sv-cta">Đặt lịch sửa chữa</a>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="sv-icon sv-green">
+            <svg width="32" height="32" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 2v6l2-2 2 2V2"/><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 10h20M12 10v12"/></svg>
+          </div>
+          <h3>Văn phòng phẩm</h3>
+          <p>Cung cấp đầy đủ văn phòng phẩm: giấy in, bút viết, khăn, gối, bảng trắng, chia file, bao bì...</p>
+          <ul class="sv-features">
+            <li>&#10003; Hàng chính hãng, có nguồn gốc</li>
+            <li>&#10003; Giao hàng tận văn phòng</li>
+            <li>&#10003; Chiết khấu đơn sĩ</li>
+          </ul>
+          <a href="#products" class="sv-cta">Xem sản phẩm</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section id="products" class="projects-section">
+    <div class="projects-header">
+      <span class="ph-title">SẢN PHẨM VĂN PHÒNG PHẨM</span>
+      <a href="#" class="ph-viewall">Xem tất cả &rsaquo;</a>
+      <div class="ph-arrows">
+        <button class="arrow-btn" onclick="scrollCards(-1)">&#8249;</button>
+        <button class="arrow-btn" onclick="scrollCards(1)">&#8250;</button>
+      </div>
+    </div>
+    <div class="cards-row" id="productsGrid">
+      <!-- Products rendered by JS -->
+    </div>
+    <div class="no-products" id="noProducts" style="display:none">
+      <p>Không tìm thấy sản phẩm phù hợp. Thử tìm kiếm khác hoặc <a href="#" onclick="showAdmin()">thêm sản phẩm mới</a>.</p>
+    </div>
+  </section>
+
+  <!-- RENTAL MACHINES SECTION -->
+  <section class="projects-section">
+    <div class="projects-header" style="background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 100%);">
+      <span class="ph-title">MÁY PHOTOCOPY CHO THUÊ</span>
+      <a href="#contact" class="ph-viewall">Liên hệ thuê &rsaquo;</a>
+    </div>
+    <div class="rental-grid">
+      <div class="rental-card fade-up">
+        <div class="rental-img bg-machine-1">
+          <div class="machine-mini"><div class="mm-body"><div class="mm-screen"></div></div></div>
+        </div>
+        <div class="rental-info">
+          <p class="rental-brand">Ricoh</p>
+          <h3>Ricoh MP2014 / MP2014D</h3>
+          <p class="rental-desc">Máy photocopy A4/A3, 20 trang/phút, phù hợp văn phòng nhỏ</p>
+          <p class="rental-price">600.000đ<span>/tháng</span></p>
+          <a href="#contact" class="btn-rent">Thuê ngay</a>
+        </div>
+      </div>
+      <div class="rental-card fade-up">
+        <div class="rental-img bg-machine-2">
+          <div class="machine-mini"><div class="mm-body"><div class="mm-screen"></div></div></div>
+        </div>
+        <div class="rental-info">
+          <p class="rental-brand">Canon</p>
+          <h3>Canon IR2206 / IR2206N</h3>
+          <p class="rental-desc">Máy photocopy A3, 22 trang/phút, kết nối mạng, in 2 mặt</p>
+          <p class="rental-price">800.000đ<span>/tháng</span></p>
+          <a href="#contact" class="btn-rent">Thuê ngay</a>
+        </div>
+      </div>
+      <div class="rental-card fade-up">
+        <div class="rental-img bg-machine-3">
+          <div class="machine-mini"><div class="mm-body"><div class="mm-screen"></div></div></div>
+        </div>
+        <div class="rental-info">
+          <p class="rental-brand">Kyocera</p>
+          <h3>Kyocera TASKalfa 2200</h3>
+          <p class="rental-desc">Máy photocopy A3, 22 trang/phút, bền bỉ, chi phí in thấp</p>
+          <p class="rental-price">900.000đ<span>/tháng</span></p>
+          <a href="#contact" class="btn-rent">Thuê ngay</a>
+        </div>
+      </div>
+      <div class="rental-card fade-up">
+        <div class="rental-img bg-machine-4">
+          <div class="machine-mini"><div class="mm-body"><div class="mm-screen"></div></div></div>
+        </div>
+        <div class="rental-info">
+          <p class="rental-brand">Toshiba</p>
+          <h3>Toshiba e-Studio 2518A</h3>
+          <p class="rental-desc">Máy photocopy A3 màu, 25 trang/phút, in/scan/copy/fax</p>
+          <p class="rental-price">1.500.000đ<span>/tháng</span></p>
+          <a href="#contact" class="btn-rent">Thuê ngay</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="contact-inner">
+      <div class="section-bar">
+        <span class="section-bar-label">LIÊN HỆ</span>
+        <h2>Liên hệ Thịnh Phát</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info-panel">
+          <div class="cinfo-card">
+            <div class="cinfo-icon">&#128222;</div>
+            <div>
+              <strong>Hotline</strong>
+              <p id="contact-phone">0909 123 456</p>
+              <p>0918 765 432</p>
+            </div>
+          </div>
+          <div class="cinfo-card">
+            <div class="cinfo-icon">&#9993;</div>
+            <div>
+              <strong>Email</strong>
+              <p>thinhphat@email.com</p>
+            </div>
+          </div>
+          <div class="cinfo-card">
+            <div class="cinfo-icon">&#128205;</div>
+            <div>
+              <strong>Địa chỉ</strong>
+              <p>123 Nguyễn Văn Linh,<br>Q.7, TP. Hồ Chí Minh</p>
+            </div>
+          </div>
+          <div class="cinfo-card">
+            <div class="cinfo-icon">&#128336;</div>
+            <div>
+              <strong>Giờ làm việc</strong>
+              <p>T2 - T7: 8:00 - 18:00</p>
+              <p>CN: 8:00 - 12:00</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="submitContact(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Họ và tên *</label>
+              <input type="text" id="cf-name" placeholder="Nguyễn Văn A" required />
+            </div>
+            <div class="form-group">
+              <label>Số điện thoại *</label>
+              <input type="tel" id="cf-phone" placeholder="0909 123 456" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Dịch vụ cần tư vấn</label>
+            <select id="cf-service">
+              <option value="">-- Chọn dịch vụ --</option>
+              <option>Cho thuê máy photocopy</option>
+              <option>Sửa chữa máy photocopy</option>
+              <option>Thay mực / hộp mực</option>
+              <option>Mua văn phòng phẩm</option>
+              <option>Khác</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Nội dung</label>
+            <textarea id="cf-msg" rows="4" placeholder="Mô tả nhu cầu của bạn..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Gửi yêu cầu tư vấn</button>
+          <div id="contactSuccess" class="contact-success" style="display:none">
+            &#10003; Cảm ơn bạn! Chúng tôi sẽ liên hệ trong 30 phút.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-inner">
+        <div class="footer-col col-brand">
+          <div class="footer-logo">Thịnh<span>Phát</span>.</div>
+          <p>Chuyên cho thuê máy photocopy,<br>sửa chữa thay mực và cung cấp<br>văn phòng phẩm TP. Hồ Chí Minh.</p>
+          <p class="footer-hotline">&#128222; <span id="footer-phone-num">0909 123 456</span></p>
+        </div>
+        <div class="footer-col">
+          <strong>Dịch vụ</strong>
+          <a href="#services">Cho thuê máy photocopy</a>
+          <a href="#services">Sửa chữa máy photo</a>
+          <a href="#services">Thay mực hộp mực</a>
+          <a href="#products">Văn phòng phẩm</a>
+        </div>
+        <div class="footer-col">
+          <strong>Sản phẩm</strong>
+          <a href="#" onclick="filterCategory('giay',null)">Giấy in A4</a>
+          <a href="#" onclick="filterCategory('bang',null)">Bảng trắng</a>
+          <a href="#" onclick="filterCategory('khan',null)">Khăn &amp; gối văn phòng</a>
+          <a href="#" onclick="filterCategory('bang',null)">Chia file, bao bì</a>
+        </div>
+        <div class="footer-col">
+          <strong>Hỗ trợ</strong>
+          <a href="#contact">Liên hệ tư vấn</a>
+          <a href="#contact">Chính sách bảo hành</a>
+          <a href="#contact">Hướng dẫn thuê máy</a>
+          <a href="#" onclick="showAdmin()">Quản trị viên</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Công ty TNHH Thịnh Phát. MST: 0312345678. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== ADMIN PANEL ===================== -->
+  <div class="admin-overlay" id="adminOverlay" onclick="closeAdminIfOutside(event)">
+    <div class="admin-panel" id="adminPanel">
+
+      <div class="admin-header">
+        <h2>&#9881; Quản trị sản phẩm</h2>
+        <button class="admin-close" onclick="toggleAdminPanel()">&#10005;</button>
+      </div>
+
+      <!-- Login screen -->
+      <div id="adminLogin">
+        <div class="admin-login-form">
+          <p>Nhập mật khẩu quản trị</p>
+          <input type="password" id="adminPass" placeholder="Mật khẩu..." onkeyup="if(event.key==='Enter')adminLogin()" />
+          <button onclick="adminLogin()" class="btn-admin-login">Đăng nhập</button>
+          <p class="admin-hint">Gợi ý: thinhphat</p>
+          <p class="admin-error" id="adminError"></p>
+        </div>
+      </div>
+
+      <!-- Admin content (shown after login) -->
+      <div id="adminContent" style="display:none">
+
+        <div class="admin-tabs">
+          <button class="admin-tab active" onclick="switchAdminTab('add', this)">Thêm sản phẩm</button>
+          <button class="admin-tab" onclick="switchAdminTab('edit', this)">Chỉnh sửa</button>
+          <button class="admin-tab" onclick="switchAdminTab('list', this)">Danh sách sản phẩm</button>
+          <button class="admin-tab" onclick="switchAdminTab('config', this)">⚙ Cấu hình</button>
+        </div>
+
+        <!-- ADD PRODUCT FORM -->
+        <div id="tabAdd" class="admin-tab-content">
+          <form onsubmit="addProduct(event)" class="add-product-form">
+            <div class="ap-row">
+              <div class="ap-group">
+                <label>Tên sản phẩm *</label>
+                <input type="text" id="ap-name" placeholder="VD: Giấy A4 Double A 500 tờ" required />
+              </div>
+              <div class="ap-group">
+                <label>Danh mục *</label>
+                <select id="ap-cat" required>
+                  <option value="">-- Chọn danh mục --</option>
+                  <option value="giay">Giấy &amp; Bút</option>
+                  <option value="khan">Khăn &amp; Gối</option>
+                  <option value="bang">Bảng &amp; File</option>
+                  <option value="thue">Cho thuê máy</option>
+                  <option value="suachua">Sửa chữa</option>
+                  <option value="khac">Khác</option>
+                </select>
+              </div>
+            </div>
+            <div class="ap-row">
+              <div class="ap-group">
+                <label>Giá bán (VND) *</label>
+                <input type="number" id="ap-price" placeholder="VD: 85000" min="0" required />
+              </div>
+              <div class="ap-group">
+                <label>Đơn vị</label>
+                <input type="text" id="ap-unit" placeholder="VD: cuộn, hộp, tờ, cái..." />
+              </div>
+            </div>
+            <div class="ap-row">
+              <div class="ap-group">
+                <label>Giá gốc (để gạch ngang)</label>
+                <input type="number" id="ap-oldprice" placeholder="VD: 95000" min="0" />
+              </div>
+              <div class="ap-group">
+                <label>Thương hiệu</label>
+                <input type="text" id="ap-brand" placeholder="VD: Double A, Thịnh Long..." />
+              </div>
+            </div>
+            <div class="ap-group">
+              <label>Mô tả ngắn</label>
+              <textarea id="ap-desc" rows="2" placeholder="Mô tả ngắn về sản phẩm..."></textarea>
+            </div>
+            <div class="ap-group">
+              <label>Hình ảnh (Upload hoặc URL)</label>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input type="file" id="ap-img-upload" accept="image/*" onchange="handleImageUpload(this)" style="flex:1" />
+                <button type="button" onclick="clearImagePreview()" class="btn-reset" style="width:auto">Xóa ảnh</button>
+              </div>
+              <div id="ap-img-preview" style="width:100%;height:100px;background:#f0f0f0;border:1px solid #ddd;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;overflow:hidden">
+                <span style="color:#999;font-size:12px">Preview ảnh</span>
+              </div>
+              <input type="hidden" id="ap-img" />
+              <label style="font-size:11px;color:#666">Hoặc nhập URL ảnh:</label>
+              <input type="url" id="ap-img-url" placeholder="https://..." onchange="handleImageUrl(this)" />
+            </div>
+            <div class="ap-row ap-actions">
+              <button type="submit" class="btn-submit">&#43; Thêm sản phẩm</button>
+              <button type="button" onclick="resetAddForm()" class="btn-reset">Xóa form</button>
+            </div>
+            <div id="addSuccess" class="contact-success" style="display:none">
+              &#10003; Đã thêm sản phẩm thành công!
+            </div>
+          </form>
+        </div>
+
+        <!-- EDIT PRODUCT FORM -->
+        <div id="tabEdit" class="admin-tab-content" style="display:none">
+          <div id="editProductSelect" style="padding:1rem;border-bottom:1px solid #eee;margin-bottom:1rem">
+            <label style="font-size:12px;font-weight:700;color:#666;text-transform:uppercase">Chọn sản phẩm để chỉnh sửa:</label>
+            <select id="ep-select" onchange="loadProductEdit(this.value)" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;margin-top:8px;font-family:Inter">
+              <option value="">-- Chọn sản phẩm --</option>
+            </select>
+          </div>
+          <form id="editProductForm" onsubmit="updateProduct(event)" class="add-product-form" style="display:none">
+            <div class="ap-row">
+              <div class="ap-group">
+                <label>Tên sản phẩm *</label>
+                <input type="text" id="ep-name" required />
+              </div>
+              <div class="ap-group">
+                <label>Danh mục *</label>
+                <select id="ep-cat" required>
+                  <option value="giay">Giấy &amp; Bút</option>
+                  <option value="khan">Khăn &amp; Gối</option>
+                  <option value="bang">Bảng &amp; File</option>
+                  <option value="thue">Cho thuê máy</option>
+                  <option value="suachua">Sửa chữa</option>
+                  <option value="khac">Khác</option>
+                </select>
+              </div>
+            </div>
+            <div class="ap-row">
+              <div class="ap-group">
+                <label>Giá bán (VND) *</label>
+                <input type="number" id="ep-price" min="0" required />
+              </div>
+              <div class="ap-group">
+                <label>Đơn vị</label>
+                <input type="text" id="ep-unit" />
+              </div>
+            </div>
+            <div class="ap-row">
+              <div class="ap-group">
+                <label>Giá gốc</label>
+                <input type="number" id="ep-oldprice" min="0" />
+              </div>
+              <div class="ap-group">
+                <label>Thương hiệu</label>
+                <input type="text" id="ep-brand" />
+              </div>
+            </div>
+            <div class="ap-group">
+              <label>Mô tả</label>
+              <textarea id="ep-desc" rows="2"></textarea>
+            </div>
+            <div class="ap-group">
+              <label>Hình ảnh</label>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input type="file" id="ep-img-upload" accept="image/*" onchange="handleImageUpload(this)" style="flex:1" />
+                <button type="button" onclick="clearImagePreview('ep')" class="btn-reset" style="width:auto">Xóa</button>
+              </div>
+              <div id="ep-img-preview" style="width:100%;height:100px;background:#f0f0f0;border:1px solid #ddd;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;overflow:hidden">
+                <span style="color:#999;font-size:12px">Preview ảnh</span>
+              </div>
+              <input type="hidden" id="ep-img" />
+            </div>
+            <div class="ap-row ap-actions">
+              <button type="submit" class="btn-submit">&#10003; Cập nhật sản phẩm</button>
+              <button type="button" onclick="cancelEdit()" class="btn-reset">Hủy</button>
+            </div>
+            <div id="editSuccess" class="contact-success" style="display:none">
+              &#10003; Đã cập nhật sản phẩm thành công!
+            </div>
+          </form>
+        </div>
+
+        <!-- PRODUCT LIST -->
+        <div id="tabList" class="admin-tab-content" style="display:none">
+          <div class="admin-product-list" id="adminProductList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- CONFIG TAB -->
+        <div id="tabConfig" class="admin-tab-content" style="display:none">
+          <div class="config-section">
+            <h3>&#128222; Cấu hình Hotline / Zalo</h3>
+            <div class="ap-group">
+              <label>Số điện thoại Hotline &amp; Zalo</label>
+              <input type="tel" id="cfg-phone" placeholder="VD: 0909123456" style="font-family:Inter" />
+              <p style="font-size:11px;color:#999;margin-top:5px">Số này sẽ tự động cập nhật lên Top Bar, Header, nút gọi, Zalo chat và Footer.</p>
+            </div>
+            <button onclick="saveHotlineConfig()" class="btn-submit" style="margin-top:14px">&#10003; Lưu cấu hình</button>
+            <div id="configSuccess" class="contact-success" style="display:none;margin-top:10px">&#10003; Đã lưu! Số điện thoại đã được cập nhật toàn trang.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCartIfOutside(event)">
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <h3>Giỏ hàng</h3>
+        <button onclick="toggleCart()">&#10005;</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty">Giỏ hàng trống.</p>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display:none">
+        <div class="cart-total">Tổng: <strong id="cartTotal">0đ</strong></div>
+        <a href="#contact" class="btn-submit" onclick="toggleCart()">Đặt hàng / Liên hệ</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING CONTACT BUTTONS -->
+  <div class="float-contact">
+    <a id="float-zalo" href="https://zalo.me/0909123456" target="_blank" rel="noopener" class="float-btn float-zalo">
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="4" y="30" font-size="30" font-family="Arial" font-weight="900">Z</text></svg>
+      <span class="float-label">Chat Zalo</span>
+    </a>
+    <a id="float-hotline" href="tel:0909123456" class="float-btn float-hotline">
+      <svg width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    </a>
+  </div>
+
+  <script>
+  // ===================== DATA =====================
+  const DEFAULT_PRODUCTS = [
+    { id:1,  name:"Giấy A4 Double A 70gsm (500 tờ/ream)",    cat:"giay",   price:88000,  oldPrice:95000,  unit:"ream",    brand:"Double A", desc:"Giấy in photo chất lượng cao, trắng mịn, không kem vàng" },
+    { id:2,  name:"Bút bi Thiên Long TL-027 (hộp 20 cái)",  cat:"giay",   price:42000,  oldPrice:50000,  unit:"hộp",    brand:"Thiên Long", desc:"Bút viết tròn, mực xanh/đỏ/đen, ngòi bút bền bỉ" },
+    { id:3,  name:"Bút đa màu Artline (12 màu)",             cat:"giay",   price:65000,  oldPrice:null,   unit:"hộp",    brand:"Artline",    desc:"Bút đa không phải nhèo, màu sắc tươi sáng, nút đầy" },
+    { id:4,  name:"Khăn giấy Paseo (gói 10 gói nhỏ)",       cat:"khan",   price:28000,  oldPrice:32000,  unit:"gói",    brand:"Paseo",      desc:"Khăn giấy mềm, 2 lớp, không xơ, an toàn cho da nhạy cảm" },
+    { id:5,  name:"Gối tựa lưng văn phòng (có điều chỉnh)",  cat:"khan",   price:120000, oldPrice:150000, unit:"cái",    brand:"Thịnh Phát", desc:"Gối tựa lưng bọc vải lưới thoáng khí, giảm đau lưng khi ngồi lâu" },
+    { id:6,  name:"Bảng trắng từ nam châm 1.2x0.8m",         cat:"bang",   price:380000, oldPrice:450000, unit:"cái",    brand:"Thịnh Phát", desc:"Bảng trắng khung nhôm, bề mặt từ, kèm 2 bút lông + 1 nam châm" },
+    { id:7,  name:"Chia file nhựa A4 (hộp 100 cái)",         cat:"bang",   price:35000,  oldPrice:null,   unit:"hộp",    brand:"Deli",       desc:"Chia file nhựa trong, dày 0.1mm, dùng cho A4, bền và chắc" },
+    { id:8,  name:"Binder clip 32mm (hộp 12 cái)",           cat:"bang",   price:12000,  oldPrice:null,   unit:"hộp",    brand:"Deli",       desc:"Kẹp bằng thép không rỉ, có 32mm, kẹp được 150 tờ giấy" },
+    { id:9,  name:"Giấy A3 Papermix 80gsm (500 tờ)",        cat:"giay",   price:165000, oldPrice:185000, unit:"ream",    brand:"Papermix",   desc:"Giấy A3 cao cấp, dùng cho máy photocopy và máy in" },
+    { id:10, name:"Khay đựng bút để bàn (nhựa ABS)",         cat:"khan",   price:25000,  oldPrice:null,   unit:"cái",    brand:"Deli",       desc:"Khay đựng bút để bàn, có 3 ngăn, chống trượt, bền đẹp" },
+  ];
+
+  let products    = JSON.parse(localStorage.getItem('tp_products') || 'null') || DEFAULT_PRODUCTS;
+  let cart        = JSON.parse(localStorage.getItem('tp_cart')     || '[]');
+  let adminLogged = false;
+  let nextId      = products.reduce((m,p)=>Math.max(m,p.id),0) + 1;
+  let currentFilter = 'all';
+
+  // ===================== HOTLINE CONFIG =====================
+  const DEFAULT_PHONE = '0909123456';
+  let hotlinePhone = localStorage.getItem('tp_hotline') || DEFAULT_PHONE;
+
+  function fmtPhone(p) {
+    // "0909123456" → "0909 123 456"
+    return p.replace(/^(\d{4})(\d{3})(\d{3})$/, '$1 $2 $3');
+  }
+
+  function applyPhone(phone) {
+    const fmt = fmtPhone(phone);
+    const tb = document.getElementById('topbar-phone');
+    if (tb) tb.textContent = fmt;
+    const hl = document.getElementById('hdr-phone-link');
+    if (hl) hl.href = 'tel:' + phone;
+    const ht = document.getElementById('hdr-phone-text');
+    if (ht) ht.textContent = fmt;
+    const bl = document.getElementById('banner-phone-link');
+    if (bl) bl.href = 'tel:' + phone;
+    const cp = document.getElementById('contact-phone');
+    if (cp) cp.textContent = fmt;
+    const fp = document.getElementById('footer-phone-num');
+    if (fp) fp.textContent = fmt;
+    const fz = document.getElementById('float-zalo');
+    if (fz) fz.href = 'https://zalo.me/' + phone;
+    const fh = document.getElementById('float-hotline');
+    if (fh) fh.href = 'tel:' + phone;
+  }
+
+  function saveHotlineConfig() {
+    const val = document.getElementById('cfg-phone').value.trim().replace(/\s/g, '');
+    if (!val || !/^\d{9,11}$/.test(val)) {
+      alert('Vui lòng nhập số điện thoại hợp lệ (9–11 chữ số, không có khoảng trắng/dấu chấm).');
+      return;
+    }
+    hotlinePhone = val;
+    localStorage.setItem('tp_hotline', val);
+    applyPhone(val);
+    const ok = document.getElementById('configSuccess');
+    ok.style.display = 'block';
+    setTimeout(() => ok.style.display = 'none', 3500);
+  }
+
+  // ===================== SCROLL REVEAL =====================
+  function observeRevealItems() {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up:not(.in-view)').forEach(el => obs.observe(el));
+  }
+
+  function saveProducts() { localStorage.setItem('tp_products', JSON.stringify(products)); }
+  function saveCart()     { localStorage.setItem('tp_cart',     JSON.stringify(cart)); }
+
+  // ===================== RENDER PRODUCTS =====================
+  const CAT_COLORS = {
+    giay: ['#fef3c7','#d97706'], khan: ['#ede9fe','#7c3aed'],
+    bang: ['#dcfce7','#16a34a'], thue: ['#dbeafe','#2563eb'],
+    suachua: ['#fee2e2','#dc2626'], khac: ['#f1f5f9','#64748b']
+  };
+  const CAT_ICONS = {
+    giay:'&#128196;', khan:'&#129529;', bang:'&#128203;',
+    thue:'&#128444;', suachua:'&#128295;', khac:'&#128230;'
+  };
+
+  function fmtPrice(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.') + 'đ';
+  }
+
+  function renderProducts(list) {
+    const grid = document.getElementById('productsGrid');
+    const noP  = document.getElementById('noProducts');
+    grid.classList.add('grid-loading');
+    setTimeout(() => {
+      if (!list.length) {
+        grid.innerHTML = '';
+        noP.style.display = 'block';
+        grid.classList.remove('grid-loading');
+        return;
+      }
+      noP.style.display = 'none';
+      grid.innerHTML = list.map((p, i) => {
+        const [bg, accent] = CAT_COLORS[p.cat] || CAT_COLORS.khac;
+        const icon = CAT_ICONS[p.cat] || CAT_ICONS.khac;
+        const discBadge = p.oldPrice
+          ? `<span class="badge-pct">Giảm ${Math.round((1-p.price/p.oldPrice)*100)}%</span>` : '';
+        const imgHtml = p.img
+          ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:8px">`
+          : `<div style="font-size:3rem;opacity:.6">${icon}</div>`;
+        return `
+        <div class="pcard fade-up" style="--reveal-delay:${i * 0.06}s">
+          <div class="pcard-badges">
+            ${discBadge}
+            <span class="badge-tra">Trả góp 0%</span>
+          </div>
+          <div class="pcard-img" style="background:${bg}">
+            ${imgHtml}
+          </div>
+          <div class="pcard-info">
+            <p class="pcard-brand" style="color:${accent}">${p.brand||''}</p>
+            <p class="pcard-name">${p.name}</p>
+            <p class="pcard-price">${fmtPrice(p.price)}${p.unit?'/<span style="font-size:11px;font-weight:400">'+p.unit+'</span>':''}
+              ${p.oldPrice?`<span class="pcard-old">${fmtPrice(p.oldPrice)}</span>`:''}
+            </p>
+            <p class="pcard-installment">${p.desc||''}</p>
+            <div class="pcard-foot">
+              <span class="pcard-stars">&#9733; 5</span>
+              <button class="btn-add-cart" onclick="addToCart(${p.id})">+ Thêm vào giỏ</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+      grid.classList.remove('grid-loading');
+      observeRevealItems();
+    }, 160);
+  }
+
+  function filterCategory(cat, el) {
+    currentFilter = cat;
+    document.querySelectorAll('.cat-link').forEach(a => a.classList.remove('active'));
+    if (el) el.classList.add('active');
+    const list = cat === 'all' ? products : products.filter(p => p.cat === cat);
+    renderProducts(list);
+    const productCats = ['giay', 'khan', 'bang'];
+    if (productCats.includes(cat)) {
+      document.getElementById('products').scrollIntoView({behavior:'smooth'});
+    }
+  }
+
+  function handleSearch(val) {
+    const q = val.toLowerCase().trim();
+    const list = q ? products.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      (p.brand||'').toLowerCase().includes(q) ||
+      (p.desc||'').toLowerCase().includes(q)
+    ) : products;
+    renderProducts(list);
+  }
+
+  // ===================== CART =====================
+  function updateCartUI() {
+    const count = cart.reduce((s,i)=>s+i.qty, 0);
+    document.getElementById('cartCount').textContent = count;
+    const itemsEl = document.getElementById('cartItems');
+    const footEl  = document.getElementById('cartFooter');
+    if (!cart.length) {
+      itemsEl.innerHTML = '<p class="cart-empty">Giỏ hàng trống.</p>';
+      footEl.style.display = 'none';
+      return;
+    }
+    footEl.style.display = 'block';
+    let total = 0;
+    itemsEl.innerHTML = cart.map(item => {
+      total += item.price * item.qty;
+      return `
+      <div class="cart-item">
+        <div class="ci-info">
+          <p class="ci-name">${item.name}</p>
+          <p class="ci-price">${fmtPrice(item.price)}</p>
+        </div>
+        <div class="ci-controls">
+          <button onclick="changeQty(${item.id},-1)">&#8722;</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${item.id},1)">&#43;</button>
+          <button class="ci-del" onclick="removeFromCart(${item.id})">&#10005;</button>
+        </div>
+      </div>`;
+    }).join('');
+    document.getElementById('cartTotal').textContent = fmtPrice(total);
+  }
+
+  function addToCart(id) {
+    const p = products.find(x=>x.id===id);
+    if (!p) return;
+    const existing = cart.find(x=>x.id===id);
+    if (existing) existing.qty++;
+    else cart.push({id:p.id, name:p.name, price:p.price, qty:1});
+    saveCart();
+    updateCartUI();
+    // brief flash on cart icon
+    const btn = document.getElementById('cartBtn');
+    btn.classList.add('cart-flash');
+    setTimeout(()=>btn.classList.remove('cart-flash'),500);
+  }
+
+  function changeQty(id, delta) {
+    const item = cart.find(x=>x.id===id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) cart = cart.filter(x=>x.id!==id);
+    saveCart(); updateCartUI();
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(x=>x.id!==id);
+    saveCart(); updateCartUI();
+  }
+
+  function toggleCart() {
+    const ov = document.getElementById('cartOverlay');
+    ov.classList.toggle('open');
+  }
+
+  function closeCartIfOutside(e) {
+    if (e.target.id==='cartOverlay') toggleCart();
+  }
+
+  document.getElementById('cartBtn').addEventListener('click', toggleCart);
+
+  // ===================== ADMIN =====================
+  function toggleAdminPanel() {
+    const ov = document.getElementById('adminOverlay');
+    ov.classList.toggle('open');
+    if (!ov.classList.contains('open')) return;
+    if (!adminLogged) {
+      document.getElementById('adminLogin').style.display = 'block';
+      document.getElementById('adminContent').style.display = 'none';
+    }
+  }
+
+  function showAdmin() {
+    document.getElementById('adminOverlay').classList.add('open');
+    if (!adminLogged) {
+      document.getElementById('adminLogin').style.display = 'block';
+      document.getElementById('adminContent').style.display = 'none';
+    }
+    return false;
+  }
+
+  function closeAdminIfOutside(e) {
+    if (e.target.id==='adminOverlay') toggleAdminPanel();
+  }
+
+  function adminLogin() {
+    const pass = document.getElementById('adminPass').value;
+    if (pass === 'thinhphat') {
+      adminLogged = true;
+      document.getElementById('adminLogin').style.display = 'none';
+      document.getElementById('adminContent').style.display = 'block';
+      renderAdminList();
+    } else {
+      document.getElementById('adminError').textContent = 'Sai mật khẩu! Thử lại.';
+    }
+  }
+
+  function switchAdminTab(tab, el) {
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tabAdd').style.display    = tab==='add'    ? 'block' : 'none';
+    document.getElementById('tabEdit').style.display   = tab==='edit'   ? 'block' : 'none';
+    document.getElementById('tabList').style.display   = tab==='list'   ? 'block' : 'none';
+    document.getElementById('tabConfig').style.display = tab==='config' ? 'block' : 'none';
+    if (tab==='edit')   populateEditSelect();
+    if (tab==='list')   renderAdminList();
+    if (tab==='config') document.getElementById('cfg-phone').value = hotlinePhone;
+  }
+
+  // ===================== IMAGE UPLOAD =====================
+  function handleImageUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64 = e.target.result;
+      const prefix = input.id.includes('ap') ? 'ap' : 'ep';
+      document.getElementById(prefix + '-img').value = base64;
+      document.getElementById(prefix + '-img-preview').innerHTML =
+        `<img src="${base64}" style="width:100%;height:100%;object-fit:cover" />`;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function handleImageUrl(input) {
+    const url = input.value.trim();
+    if (url) {
+      document.getElementById('ap-img').value = url;
+      document.getElementById('ap-img-preview').innerHTML =
+        `<img src="${url}" style="width:100%;height:100%;object-fit:cover" onerror="this.src=''" />`;
+    }
+  }
+
+  function clearImagePreview(prefix = 'ap') {
+    document.getElementById(prefix + '-img').value = '';
+    document.getElementById(prefix + '-img-preview').innerHTML =
+      '<span style="color:#999;font-size:12px">Preview ảnh</span>';
+  }
+
+  // ===================== EDIT / UPDATE =====================
+  let editingId = null;
+
+  function populateEditSelect() {
+    const sel = document.getElementById('ep-select');
+    sel.innerHTML = '<option value="">-- Chọn sản phẩm --</option>' +
+      products.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+  }
+
+  function loadProductEdit(id) {
+    if (!id) {
+      document.getElementById('editProductForm').style.display = 'none';
+      return;
+    }
+    const p = products.find(x => x.id == id);
+    if (!p) return;
+    editingId = p.id;
+    document.getElementById('ep-name').value = p.name;
+    document.getElementById('ep-cat').value = p.cat;
+    document.getElementById('ep-price').value = p.price;
+    document.getElementById('ep-unit').value = p.unit || '';
+    document.getElementById('ep-oldprice').value = p.oldPrice || '';
+    document.getElementById('ep-brand').value = p.brand || '';
+    document.getElementById('ep-desc').value = p.desc || '';
+    document.getElementById('ep-img').value = p.img || '';
+    if (p.img) {
+      document.getElementById('ep-img-preview').innerHTML =
+        `<img src="${p.img}" style="width:100%;height:100%;object-fit:cover" />`;
+    } else {
+      clearImagePreview('ep');
+    }
+    document.getElementById('editProductForm').style.display = 'block';
+  }
+
+  function updateProduct(e) {
+    e.preventDefault();
+    const p = products.find(x => x.id == editingId);
+    if (!p) return;
+    p.name = document.getElementById('ep-name').value.trim();
+    p.cat = document.getElementById('ep-cat').value;
+    p.price = parseInt(document.getElementById('ep-price').value);
+    p.unit = document.getElementById('ep-unit').value.trim();
+    p.oldPrice = parseInt(document.getElementById('ep-oldprice').value) || null;
+    p.brand = document.getElementById('ep-brand').value.trim();
+    p.desc = document.getElementById('ep-desc').value.trim();
+    p.img = document.getElementById('ep-img').value || null;
+    saveProducts();
+    renderProducts(currentFilter==='all' ? products : products.filter(x=>x.cat===currentFilter));
+    const ok = document.getElementById('editSuccess');
+    ok.style.display = 'block';
+    setTimeout(() => ok.style.display = 'none', 2500);
+    setTimeout(() => {
+      editingId = null;
+      document.getElementById('editProductForm').style.display = 'none';
+      document.getElementById('ep-select').value = '';
+    }, 500);
+  }
+
+  function cancelEdit() {
+    editingId = null;
+    document.getElementById('editProductForm').style.display = 'none';
+    document.getElementById('ep-select').value = '';
+    clearImagePreview('ep');
+  }
+
+  function addProduct(e) {
+    e.preventDefault();
+    const name     = document.getElementById('ap-name').value.trim();
+    const cat      = document.getElementById('ap-cat').value;
+    const price    = parseInt(document.getElementById('ap-price').value);
+    const oldPrice = parseInt(document.getElementById('ap-oldprice').value) || null;
+    const unit     = document.getElementById('ap-unit').value.trim();
+    const brand    = document.getElementById('ap-brand').value.trim();
+    const desc     = document.getElementById('ap-desc').value.trim();
+    const img      = document.getElementById('ap-img').value.trim();
+
+    products.push({ id: nextId++, name, cat, price, oldPrice, unit, brand, desc, img: img||null });
+    saveProducts();
+    renderProducts(currentFilter==='all' ? products : products.filter(p=>p.cat===currentFilter));
+
+    const ok = document.getElementById('addSuccess');
+    ok.style.display = 'block';
+    setTimeout(()=>ok.style.display='none', 2500);
+    e.target.reset();
+  }
+
+  function resetAddForm() {
+    document.getElementById('ap-name').value = '';
+    document.getElementById('ap-cat').value  = '';
+    document.getElementById('ap-price').value= '';
+    document.getElementById('ap-oldprice').value = '';
+    document.getElementById('ap-unit').value  = '';
+    document.getElementById('ap-brand').value = '';
+    document.getElementById('ap-desc').value  = '';
+    document.getElementById('ap-img').value   = '';
+    document.getElementById('ap-img-url').value = '';
+    clearImagePreview('ap');
+  }
+
+  function renderAdminList() {
+    const el = document.getElementById('adminProductList');
+    if (!products.length) { el.innerHTML='<p style="padding:1rem;color:#888">Chưa có sản phẩm nào.</p>'; return; }
+    el.innerHTML = `
+      <table class="admin-table">
+        <thead><tr><th>Ảnh</th><th>Tên sản phẩm</th><th>Danh mục</th><th>Giá</th><th>Thương hiệu</th><th>Sửa</th><th>Xóa</th></tr></thead>
+        <tbody>
+          ${products.map(p=>`
+          <tr>
+            <td style="padding:8px">
+              ${p.img
+                ? `<img src="${p.img}" style="width:40px;height:40px;object-fit:cover;border-radius:4px" />`
+                : '<div style="width:40px;height:40px;background:#f0f0f0;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#999">No img</div>'
+              }
+            </td>
+            <td style="font-size:12px;max-width:200px;word-break:break-word">${p.name}</td>
+            <td style="font-size:12px">${p.cat}</td>
+            <td style="font-size:12px;font-weight:700">${fmtPrice(p.price)}</td>
+            <td style="font-size:12px">${p.brand||'-'}</td>
+            <td><button class="btn-edit-prod" onclick="switchToEditTab(${p.id})">✎ Sửa</button></td>
+            <td><button class="btn-del-prod" onclick="deleteProduct(${p.id})">&#10005;</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+  }
+
+  function switchToEditTab(id) {
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.admin-tab')[1].classList.add('active');
+    document.getElementById('tabAdd').style.display    = 'none';
+    document.getElementById('tabEdit').style.display   = 'block';
+    document.getElementById('tabList').style.display   = 'none';
+    document.getElementById('tabConfig').style.display = 'none';
+    populateEditSelect();
+    document.getElementById('ep-select').value = id;
+    loadProductEdit(id);
+  }
+
+  function deleteProduct(id) {
+    if (!confirm('Xác nhận xóa sản phẩm này?')) return;
+    products = products.filter(p=>p.id!==id);
+    saveProducts();
+    renderAdminList();
+    renderProducts(currentFilter==='all' ? products : products.filter(p=>p.cat===currentFilter));
+  }
+
+  // ===================== CONTACT FORM =====================
+  function submitContact(e) {
+    e.preventDefault();
+    const ok = document.getElementById('contactSuccess');
+    ok.style.display = 'block';
+    e.target.reset();
+    setTimeout(()=>ok.style.display='none', 4000);
+  }
+
+  // ===================== INIT =====================
+  document.addEventListener('DOMContentLoaded', () => {
+    applyPhone(hotlinePhone);
+    renderProducts(products);
+    updateCartUI();
+    observeRevealItems();
+  });
+  </script>
+
+</body>
+</html>
